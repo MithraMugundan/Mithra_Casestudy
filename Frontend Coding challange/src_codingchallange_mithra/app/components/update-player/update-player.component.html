@@ -1,0 +1,92 @@
+<p>update-player works!</p>
+
+<div class="container mt-4 col-md-6 card p-4 shadow rounded-3">
+  <h3 class="mb-3 text-center text-warning">Update Player</h3>
+
+  <form #updateForm="ngForm" (ngSubmit)="updatePlayer()" novalidate>
+
+    <!-- Hidden Player ID -->
+    <input type="hidden" name="playerId" [(ngModel)]="player.playerId">
+
+    <!-- Player Name -->
+    <div class="form-group mb-3">
+      <label for="playerName" class="form-label">Player Name:</label>
+      <input type="text" class="form-control" id="playerName" name="playerName"
+             required [(ngModel)]="player.playerName" #nameCtrl="ngModel">
+      <div class="text-danger" *ngIf="nameCtrl.touched && nameCtrl.invalid">
+        Player name is required.
+      </div>
+    </div>
+
+    <!-- Jersey Number -->
+    <div class="form-group mb-3">
+      <label for="jerseyNumber" class="form-label">Jersey Number:</label>
+      <input type="number" class="form-control" id="jerseyNumber" name="jerseyNumber"
+             required [(ngModel)]="player.jerseyNumber" #jerseyCtrl="ngModel">
+      <div class="text-danger" *ngIf="jerseyCtrl.touched && jerseyCtrl.invalid">
+        Jersey number is required.
+      </div>
+    </div>
+
+    <!-- Role -->
+    <div class="form-group mb-3">
+      <label for="role" class="form-label">Role:</label>
+      <select class="form-control" id="role" name="role"
+              required [(ngModel)]="player.role" #roleCtrl="ngModel">
+        <option value="" disabled>Select Role</option>
+        <option>Batsman</option>
+        <option>Bowler</option>
+        <option>Keeper</option>
+        <option>All Rounder</option>
+      </select>
+      <div class="text-danger" *ngIf="roleCtrl.touched && roleCtrl.invalid">
+        Role is required.
+      </div>
+    </div>
+
+    <!-- Total Matches -->
+    <div class="form-group mb-3">
+      <label for="totalMatches" class="form-label">Total Matches:</label>
+      <input type="number" class="form-control" id="totalMatches" name="totalMatches"
+             required [(ngModel)]="player.totalMatches" #matchCtrl="ngModel">
+      <div class="text-danger" *ngIf="matchCtrl.touched && matchCtrl.invalid">
+        Total matches is required.
+      </div>
+    </div>
+
+    <!-- Team Name -->
+    <div class="form-group mb-3">
+      <label for="teamName" class="form-label">Team Name:</label>
+      <input type="text" class="form-control" id="teamName" name="teamName"
+             required [(ngModel)]="player.teamName" #teamCtrl="ngModel">
+      <div class="text-danger" *ngIf="teamCtrl.touched && teamCtrl.invalid">
+        Team name is required.
+      </div>
+    </div>
+
+    <!-- State/Country -->
+    <div class="form-group mb-3">
+      <label for="stateName" class="form-label">State/Country:</label>
+      <input type="text" class="form-control" id="stateName" name="stateName"
+             required [(ngModel)]="player.stateName" #stateCtrl="ngModel">
+      <div class="text-danger" *ngIf="stateCtrl.touched && stateCtrl.invalid">
+        State or country is required.
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="form-group mb-4">
+      <label for="description" class="form-label">Description:</label>
+      <textarea class="form-control" id="description" name="description"
+                rows="3" required [(ngModel)]="player.description" #descCtrl="ngModel"></textarea>
+      <div class="text-danger" *ngIf="descCtrl.touched && descCtrl.invalid">
+        Description is required.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-warning w-100" [disabled]="updateForm.invalid">
+      Update Player
+    </button>
+
+  </form>
+</div>

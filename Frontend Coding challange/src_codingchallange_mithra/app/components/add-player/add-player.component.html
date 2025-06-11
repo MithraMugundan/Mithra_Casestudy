@@ -1,0 +1,84 @@
+<div class="container mt-5">
+  <div class="card shadow-lg border-0 rounded-4 bg-light p-4">
+    <h2 class="text-center text-white py-2 rounded-3 mb-4" style="background: linear-gradient(90deg, #007bff, #00c6ff);">
+       Add New Player
+    </h2>
+
+    <form #playerForm="ngForm" (ngSubmit)="insertPlayer(playerForm.value)" novalidate>
+
+      <!-- Player ID -->
+      <div class="form-floating mb-3">
+        <input type="number" id="playerId" class="form-control" name="playerId"
+               placeholder="Player ID" ngModel #idCtrl="ngModel">
+        <label for="playerId">Player ID</label>
+        <small class="text-danger" *ngIf="idCtrl.touched && idCtrl.invalid">Player ID is required.</small>
+      </div>
+
+      <!-- Player Name -->
+      <div class="form-floating mb-3">
+        <input type="text" id="playerName" class="form-control" name="playerName"
+               placeholder="Player Name" required ngModel #nameCtrl="ngModel">
+        <label for="playerName">Player Name</label>
+        <small class="text-danger" *ngIf="nameCtrl.touched && nameCtrl.invalid">Name is required.</small>
+      </div>
+
+      <!-- Jersey Number -->
+      <div class="form-floating mb-3">
+        <input type="number" id="jerseyNumber" class="form-control" name="jerseyNumber"
+               placeholder="Jersey Number" required ngModel #jerseyCtrl="ngModel">
+        <label for="jerseyNumber">Jersey Number</label>
+        <small class="text-danger" *ngIf="jerseyCtrl.touched && jerseyCtrl.invalid">Required.</small>
+      </div>
+
+      <!-- Role -->
+      <div class="form-floating mb-3">
+        <select id="role" class="form-select" name="role" required ngModel #roleCtrl="ngModel">
+          <option value="" disabled>Select Role</option>
+          <option>Batsman</option>
+          <option>Bowler</option>
+          <option>Keeper</option>
+          <option>All Rounder</option>
+        </select>
+        <label for="role">Role</label>
+        <small class="text-danger" *ngIf="roleCtrl.touched && roleCtrl.invalid">Role is required.</small>
+      </div>
+
+      <!-- Total Matches -->
+      <div class="form-floating mb-3">
+        <input type="number" id="totalMatches" class="form-control" name="totalMatches"
+               placeholder="Total Matches" required ngModel #matchCtrl="ngModel">
+        <label for="totalMatches">Total Matches</label>
+        <small class="text-danger" *ngIf="matchCtrl.touched && matchCtrl.invalid">Required.</small>
+      </div>
+
+      <!-- Team Name -->
+      <div class="form-floating mb-3">
+        <input type="text" id="teamName" class="form-control" name="teamName"
+               placeholder="Team Name" required ngModel #teamCtrl="ngModel">
+        <label for="teamName">Team Name</label>
+        <small class="text-danger" *ngIf="teamCtrl.touched && teamCtrl.invalid">Required.</small>
+      </div>
+
+      <!-- State/Country -->
+      <div class="form-floating mb-3">
+        <input type="text" id="stateName" class="form-control" name="stateName"
+               placeholder="State or Country" required ngModel #stateCtrl="ngModel">
+        <label for="stateName">State / Country</label>
+        <small class="text-danger" *ngIf="stateCtrl.touched && stateCtrl.invalid">Required.</small>
+      </div>
+
+      <!-- Description -->
+      <div class="form-floating mb-4">
+        <textarea id="description" class="form-control" name="description" rows="3"
+                  placeholder="Description" required ngModel #descCtrl="ngModel" style="height: 100px;"></textarea>
+        <label for="description">Player Description</label>
+        <small class="text-danger" *ngIf="descCtrl.touched && descCtrl.invalid">Required.</small>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary w-100 shadow-sm fw-bold" [disabled]="playerForm.invalid">
+         Add Player
+      </button>
+    </form>
+  </div>
+</div>

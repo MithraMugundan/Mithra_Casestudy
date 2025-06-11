@@ -1,0 +1,68 @@
+<!-- Title section -->
+<div class="text-center mt-4 mb-3">
+  <h2 class="fw-bold text-primary">Welcome to Cricket Team Management</h2>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold fs-4" href="#">Cricket Team</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarContent" aria-controls="navbarContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarContent">
+      
+      <!-- Navigation links -->
+      <ul class="navbar-nav me-3 mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/addplayer">Add Player</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/updateplayer">Update Player</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/displayall">View All</a>
+        </li>
+      </ul>
+
+      <!-- Search bar -->
+      <form class="d-flex" #searchForm="ngForm" (ngSubmit)="find(searchForm)">
+        <input
+          class="form-control me-2 rounded-pill px-3"
+          type="search"
+          name="data"
+          ngModel
+          placeholder="Search Player ID"
+          aria-label="Search"
+        />
+        <button class="btn btn-light rounded-pill px-4 fw-semibold" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- Router outlet for page content -->
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+</div>
+
+<div class="container mt-5">
+  <h3 class="text-center mb-4 text-primary">Top 12 Cricket Teams in the World</h3>
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    <div class="col" *ngFor="let team of teams">
+      <div class="card shadow-sm border-primary border-2 h-100">
+        <div class="card-body text-center">
+          <h5 class="card-title text-success fw-bold">{{ team }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

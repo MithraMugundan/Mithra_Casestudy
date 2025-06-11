@@ -1,0 +1,39 @@
+<p>displayall works!</p>
+
+<div class="container mt-4">
+  <table class="table table-bordered table-striped table-hover table-primary">
+    <thead class="table-dark text-center">
+      <tr>
+        <th>SNO.</th>
+        <th>Player ID</th>
+        <th>Name</th>
+        <th>Jersey No.</th>
+        <th>Role</th>
+        <th>Matches</th>
+        <th>Team</th>
+        <th>State</th>
+        <th>Description</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let player of playerList; index as i" class="text-center align-middle">
+        <td>{{ i + 1 }}</td>
+        <td>{{ player.playerId }}</td>
+        <td>{{ player.playerName }}</td>
+        <td>{{ player.jerseyNumber }}</td>
+        <td>{{ player.role }}</td>
+        <td>{{ player.totalMatches }}</td>
+        <td>{{ player.teamName }}</td>
+        <td>{{ player.stateName }}</td>
+        <td>{{ player.description }}</td>
+        <td>
+          <button type="button" class="btn btn-sm btn-danger" (click)="deleteById(player.playerId)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
