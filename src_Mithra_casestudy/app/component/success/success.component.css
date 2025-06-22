@@ -1,0 +1,15 @@
+.success-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.bg-gunmetal {
+  background-color: #2C3E50 !important;
+}
+
+.text-orange {
+  color: #F39C12 !important;
+}
+
+.border-orange {
+  border: 2px solid #F39C12;
+}

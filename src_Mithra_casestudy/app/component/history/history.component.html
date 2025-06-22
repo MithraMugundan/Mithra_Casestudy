@@ -1,0 +1,129 @@
+<div class="container mt-4 rental-history-container">
+  <h2 class="text-center mb-5 text-orange">Your Rental History</h2>
+
+  <div class="row g-4">
+    <!-- Reservation History Card -->
+    <div class="col-md-6">
+      <div class="history-card p-4 shadow rounded">
+        <h3 class="text-orange text-center mb-4">🚗 Reservation History</h3>
+
+        <!-- Upcoming Rentals -->
+        <h5 class="section-heading text-white">Upcoming Rentals</h5>
+        <table *ngIf="upcomingReservations.length > 0" class="table table-striped custom-table mt-2">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Car</th>
+              <th>Start</th>
+              <th>End</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let res of upcomingReservations">
+              <td>{{ res.reservationId }}</td>
+              <td>{{ res.carId }}</td>
+              <td>{{ res.startDate | date:'dd MMM yyyy' }}</td>
+              <td>{{ res.endDate | date:'dd MMM yyyy' }}</td>
+              <td><span class="badge bg-info text-dark">{{ res.reservationStatus }}</span></td>
+              <td>
+                <button class="btn btn-warning btn-sm me-2" (click)="goToChangeDate(res)">Change</button>
+                <button class="btn btn-danger btn-sm" (click)="confirmCancellation(res.reservationId)">Cancel</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p *ngIf="upcomingReservations.length === 0" class="text-light">No upcoming rentals.</p>
+
+        <!-- Completed -->
+        <h5 class="section-heading mt-4 text-white">Completed</h5>
+        <table *ngIf="completedReservations.length > 0" class="table table-striped custom-table mt-2">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Car</th>
+              <th>Start</th>
+              <th>End</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let res of completedReservations">
+              <td>{{ res.reservationId }}</td>
+              <td>{{ res.carId }}</td>
+              <td>{{ res.startDate | date:'dd MMM yyyy' }}</td>
+              <td>{{ res.endDate | date:'dd MMM yyyy' }}</td>
+              <td><span class="badge bg-success">{{ res.reservationStatus }}</span></td>
+              <td>
+                <button class="btn btn-success btn-sm" (click)="navigateToFeedback(res.reservationId)">Feedback</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p *ngIf="completedReservations.length === 0" class="text-light">No completed rentals.</p>
+
+        <!-- Cancelled -->
+        <h5 class="section-heading mt-4 text-white">Cancelled</h5>
+        <table *ngIf="cancelledReservations.length > 0" class="table table-striped custom-table mt-2">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Car</th>
+              <th>Start</th>
+              <th>End</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let res of cancelledReservations">
+              <td>{{ res.reservationId }}</td>
+              <td>{{ res.carId }}</td>
+              <td>{{ res.startDate | date:'dd MMM yyyy' }}</td>
+              <td>{{ res.endDate | date:'dd MMM yyyy' }}</td>
+              <td><span class="badge bg-danger">{{ res.reservationStatus }}</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p *ngIf="cancelledReservations.length === 0" class="text-light">No cancellations.</p>
+      </div>
+    </div>
+
+    <!-- Payment History Card -->
+    <div class="col-md-6">
+      <div class="history-card p-4 shadow rounded">
+        <h3 class="text-orange text-center mb-4">💳 Payment History</h3>
+
+        <table *ngIf="paymentHistory.length > 0" class="table table-striped custom-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Reservation</th>
+              <th>Type</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pay of paymentHistory">
+              <td>{{ pay.paymentId }}</td>
+              <td>{{ pay.reservationId }}</td>
+              <td>{{ pay.paymentType }}</td>
+              <td>₹{{ pay.amount }}</td>
+              <td>{{ pay.paymentDate | date:'dd MMM yyyy' }}</td>
+              <td>
+                <span class="badge bg-{{ pay.paymentStatus === 'Success' ? 'success' : 'secondary' }}">
+                  {{ pay.paymentStatus }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p *ngIf="paymentHistory.length === 0" class="text-light">No payment records.</p>
+      </div>
+    </div>
+  </div>
+</div>

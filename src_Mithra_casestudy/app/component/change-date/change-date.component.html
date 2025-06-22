@@ -1,0 +1,44 @@
+<div class="container col-md-6 mt-5">
+  <h3 class="mb-4 text-center text-orange">Update Reservation Dates</h3>
+
+  <div class="card shadow-lg p-4 bg-gunmetal text-white rounded">
+    <!-- Reservation ID -->
+    <div class="form-group mb-3">
+      <label>Reservation ID</label>
+      <input type="text" class="form-control" [value]="reservationId" readonly>
+    </div>
+
+    <!-- Car ID -->
+    <div class="form-group mb-3">
+      <label>Car ID</label>
+      <input type="text" class="form-control" [value]="carId" readonly>
+    </div>
+
+    <!-- Customer ID -->
+    <div class="form-group mb-3">
+      <label>Customer ID</label>
+      <input type="text" class="form-control" [value]="customerId" readonly>
+    </div>
+
+    <!-- Start Date -->
+    <div class="form-group mb-3">
+      <label>New Start Date</label>
+      <input type="date" class="form-control" [(ngModel)]="startDate" name="startDate" [min]="today" required>
+    </div>
+
+    <!-- End Date -->
+    <div class="form-group mb-3">
+      <label>New End Date</label>
+      <input type="date" class="form-control" [(ngModel)]="endDate" name="endDate" [min]="startDate || today" required>
+    </div>
+
+    <p class="text-warning small">* Both dates must be filled. Start date cannot be in the past.</p>
+
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-outline-light" (click)="goBack()">Back</button>
+      <button class="btn btn-orange" (click)="submitChange()" [disabled]="!startDate || !endDate">
+        Change Date
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,104 @@
+<div class="row">
+  <!-- Filter Sidebar -->
+  <div class="col-md-3 mb-4">
+    <div class="sidebar-filter sticky-filter">
+      <h5 class="text-warning mb-3 text-center">🔎 Filter Cars</h5>
+
+      <!-- Search -->
+      <div class="mb-3">
+        <label>Search by Car Name</label>
+        <input type="text" class="form-control" [(ngModel)]="customFilter.searchTerm" (input)="applyCustomFilter()" />
+      </div>
+
+      <!-- Location -->
+      <div class="mb-3">
+        <label>Select Location</label>
+        <select class="form-select" [(ngModel)]="customFilter.location" (change)="applyCustomFilter()">
+          <option value="">All</option>
+          <option *ngFor="let loc of locations">{{ loc }}</option>
+        </select>
+      </div>
+
+      <!-- Passenger Capacity -->
+      <div class="mb-3">
+        <label>Passenger Capacity</label>
+        <div *ngFor="let cap of [2,4,5,6,7,8]" class="form-check">
+          <input class="form-check-input" type="radio" name="capacity"
+                 [value]="cap"
+                 [(ngModel)]="customFilter.passengerCapacity"
+                 (change)="applyCustomFilter()" />
+          <label class="form-check-label">{{ cap }} Seats</label>
+        </div>
+        <div class="form-check mt-1">
+          <input class="form-check-input" type="radio" name="capacity"
+                 [value]="''"
+                 [(ngModel)]="customFilter.passengerCapacity"
+                 (change)="applyCustomFilter()" />
+          <label class="form-check-label">Any</label>
+        </div>
+      </div>
+
+      <!-- Sort -->
+      <div class="mb-3">
+        <label>Sort by Price</label>
+        <select class="form-select" [(ngModel)]="customFilter.sortBy" (change)="applyCustomFilter()">
+          <option value="">None</option>
+          <option value="priceLowToHigh">Low to High</option>
+          <option value="priceHighToLow">High to Low</option>
+        </select>
+      </div>
+
+      <!-- Reset -->
+      <div class="text-center">
+        <button class="btn btn-outline-warning mt-3" (click)="onReset()">Reset Filters</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Car Cards -->
+  <div class="col-md-9">
+    <div class="row" *ngIf="filteredCars.length > 0; else noCars">
+      <div class="col-md-6 col-lg-4 mb-4" *ngFor="let car of filteredCars">
+        <div class="card shadow-lg h-100" style="border: 2px solid #F39C12;">
+          <img [src]="getImagePath(car.carName)"
+               class="card-img-top"
+               alt="{{ car.carName }}"
+               style="height: 200px; object-fit: cover;"
+               *ngIf="getImagePath(car.carName); else noImage" />
+          <ng-template #noImage>
+            <div class="text-center p-4 bg-secondary text-white">No Image Available</div>
+          </ng-template>
+
+          <div class="card-body" style="background-color: #2C3E50; color: white;">
+            <h5 class="card-title">{{ car.carName }} ({{ car.year }})</h5>
+            <p class="card-text">
+              <strong>Location:</strong> {{ car.location }}<br />
+              <strong>Capacity:</strong> {{ car.passengerCapacity }}<br />
+              <strong>Price/Day:</strong> ₹{{ car.pricePerDay }}<br />
+              <strong>Status:</strong> {{ car.carStatus }}
+            </p>
+          </div>
+
+          <div class="card-footer d-flex flex-wrap justify-content-between" style="background-color: #F39C12;">
+            <button class="btn btn-light"
+                    [disabled]="car.carStatus !== 'Available'"
+                    (click)="reserveCar(car)">
+              Reserve
+            </button>
+            <div *ngIf="authService.isAdmin()">
+              <button class="btn btn-dark me-2 mt-2" (click)="navigateToUpdate(car.carId!)">Update</button>
+              <button class="btn btn-danger mt-2" (click)="deleteCar(car.carId!)">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- No Cars -->
+    <ng-template #noCars>
+      <div class="alert alert-danger text-center fw-bold mt-4">
+        No cars found for the selected criteria.
+      </div>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+/* Container styling */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding-bottom: 40px;
+}
+
+/* Card styling */
+.card {
+  background-color: #2C3E50;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Card Title (Orange headers) */
+.card-title {
+  color: #F39C12;
+  font-weight: bold;
+}
+
+/* Number display */
+.fs-3 {
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+.fs-5 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+/* Alert box */
+.alert {
+  font-size: 1rem;
+  border-radius: 10px;
+}
+
+/* Responsive layout spacing */
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media (max-width: 768px) {
+  .fs-3 {
+    font-size: 1.4rem;
+  }
+
+  .fs-5 {
+    font-size: 1.1rem;
+  }
+}

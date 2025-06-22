@@ -1,0 +1,145 @@
+/* Overall container */
+.container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Sidebar Panel */
+.sidebar-filter {
+  background-color: #2C3E50;
+  color: white;
+  border: 2px solid #F39C12;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* Sidebar heading */
+.sidebar-filter h5 {
+  color: #F39C12;
+  font-weight: bold;
+}
+
+/* Card styles */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Card title and body */
+.card-title {
+  font-size: 1.25rem;
+  color: #F39C12;
+  font-weight: bold;
+}
+
+.card-text {
+  color: white;
+}
+
+/* Image handling */
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 2px solid #F39C12;
+}
+
+/* Card body background */
+.card-body {
+  background-color: #2C3E50;
+}
+
+/* Card footer */
+.card-footer {
+  background-color: #F39C12;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* Input and select boxes (for both main + sidebar) */
+input.form-control,
+select.form-select {
+  background-color: white;
+  color: #2C3E50;
+  border: 1px solid #ccc;
+}
+
+input.form-control:focus,
+select.form-select:focus {
+  border-color: #F39C12;
+  box-shadow: 0 0 5px #F39C12;
+}
+
+/* Filter radio buttons spacing */
+.form-check {
+  margin-bottom: 0.25rem;
+}
+
+.form-check-input:checked {
+  background-color: #F39C12;
+  border-color: #F39C12;
+}
+
+/* Reset button styling */
+.btn-outline-warning {
+  color: #F39C12;
+  border: 1px solid #F39C12;
+}
+
+.btn-outline-warning:hover {
+  background-color: #F39C12;
+  color: #2C3E50;
+}
+
+/* Section headings */
+h2 {
+  color: #F39C12;
+  font-weight: 700;
+}
+
+/* Alert styling */
+.alert {
+  border: 2px dashed #F39C12;
+  background-color: #fff8e1;
+  color: #2C3E50;
+}
+
+/* Sticky Filter Sidebar */
+.sticky-filter {
+  background-color: #2C3E50;
+  color: white;
+  border: 2px solid #F39C12;
+  border-radius: 8px;
+  padding: 20px;
+  position: sticky;
+  top: 90px; /* adjust if your navbar is taller or shorter */
+  z-index: 100;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.sticky-filter::-webkit-scrollbar {
+  width: 6px;
+}
+.sticky-filter::-webkit-scrollbar-thumb {
+  background-color: #F39C12;
+  border-radius: 3px;
+}

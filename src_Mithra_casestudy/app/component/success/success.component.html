@@ -1,0 +1,40 @@
+<div class="container mt-5 success-container">
+  <div class="alert alert-success text-center fw-bold fs-5">
+    ✅ <strong>Reservation Successful!</strong> Thank you for your payment.
+  </div>
+
+  <div class="row">
+    <!-- Reservation Card -->
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-lg border-orange">
+        <div class="card-header text-white bg-gunmetal text-center fw-bold">
+          🚗 Reservation Details
+        </div>
+        <div class="card-body bg-gunmetal text-white">
+          <p><strong>Reservation ID:</strong> {{ reservation.reservationId }}</p>
+          <p><strong>Car ID:</strong> {{ reservation.carId }}</p>
+          <p><strong>Customer ID:</strong> {{ reservation.customerId }}</p>
+          <p><strong>Start Date:</strong> {{ reservation.startDate }}</p>
+          <p><strong>End Date:</strong> {{ reservation.endDate }}</p>
+          <p><strong>Status:</strong> {{ reservation.reservationStatus }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment Card -->
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-lg border-orange">
+        <div class="card-header text-white bg-gunmetal text-center fw-bold">
+          💳 Payment Details
+        </div>
+        <div class="card-body bg-gunmetal text-white">
+          <p><strong>Payment ID:</strong> {{ payment.paymentId }}</p>
+          <p><strong>Amount Paid:</strong> ₹{{ payment.amount }}</p>
+          <p><strong>Payment Type:</strong> {{ payment.paymentType }}</p>
+          <p><strong>Payment Date:</strong> {{ payment.paymentDate }}</p>
+          <p><strong>Payment Status:</strong> {{ payment.paymentStatus }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

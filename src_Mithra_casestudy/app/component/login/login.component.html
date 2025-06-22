@@ -1,0 +1,40 @@
+<div class="login-container container col-md-4 mt-5 p-4 rounded shadow-lg">
+  <div class="text-center mb-4">
+    <img src="assets/logo.avif" width="80" height="80" class="rounded-circle shadow-sm mb-2" alt="RoadReady Logo">
+    <h2 class="text-warning">Login</h2>
+  </div>
+
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+    <!-- Username -->
+    <div class="form-group mb-3">
+      <label class="text-light">Username</label>
+      <input type="text" name="username" class="form-control" [(ngModel)]="authRequest.username" required minlength="3" #usernameRef="ngModel">
+      <div *ngIf="usernameRef.touched && usernameRef.invalid" class="text-danger small">
+        Username is required (min 3 characters).
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="form-group mb-4">
+      <label class="text-light">Password</label>
+      <input type="password" name="password" class="form-control" [(ngModel)]="authRequest.password" required minlength="4" #passwordRef="ngModel">
+      <div *ngIf="passwordRef.touched && passwordRef.invalid" class="text-danger small">
+        Password must be at least 4 characters.
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="text-center">
+      <button type="submit" class="btn btn-login w-100 py-2" [disabled]="loginForm.invalid">Login</button>
+    </div>
+  </form>
+
+  <div class="text-center mt-3">
+  <a routerLink="/forgot-password" class="text-warning">Forgot Password?</a>
+</div>
+
+
+  <!-- Messages -->
+  <div *ngIf="successMessage" class="alert alert-success mt-3 text-center">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3 text-center">{{ errorMessage }}</div>
+</div>

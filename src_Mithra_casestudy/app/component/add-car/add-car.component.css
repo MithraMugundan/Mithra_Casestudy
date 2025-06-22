@@ -1,0 +1,35 @@
+.add-car-container {
+  background-color: #2C3E50; /* Gunmetal */
+  color: white;
+  border-radius: 16px;
+}
+
+.btn-orange {
+  background-color: #F39C12;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 6px 20px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-orange:hover {
+  background-color: #e08e0b;
+  transform: translateY(-2px);
+}
+
+.btn-outline-light:hover {
+  background-color: #F39C12;
+  border-color: #F39C12;
+  color: white;
+}
+
+.form-control {
+  border-radius: 8px;
+}
+
+label {
+  font-weight: 600;
+}

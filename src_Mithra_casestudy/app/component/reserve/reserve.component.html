@@ -1,0 +1,61 @@
+<div class="container mt-4">
+  <h2 class="mb-4 text-center text-orange">Reservation Summary</h2>
+
+  <div class="card mx-auto shadow w-75" style="background-color: #2C3E50; color: white; border: 2px solid #F39C12;">
+    <div class="card-body">
+
+      <div class="row mb-2" *ngFor="let item of displayFields">
+        <div class="col-sm-4 fw-bold">{{ item.label }}:</div>
+        <div class="col-sm-8">{{ item.value }}</div>
+      </div>
+
+      <!-- Start Date -->
+      <div class="row mb-3">
+        <div class="col-sm-4 fw-bold">Start Date:</div>
+        <div class="col-sm-8">
+          <input type="date"
+                 class="form-control"
+                 [(ngModel)]="reservationDetails.startDate"
+                 name="startDate"
+                 [min]="minDate"
+                 (change)="calculateTotalAmount()" />
+        </div>
+      </div>
+
+      <!-- End Date -->
+      <div class="row mb-3">
+        <div class="col-sm-4 fw-bold">End Date:</div>
+        <div class="col-sm-8">
+          <input type="date"
+                 class="form-control"
+                 [(ngModel)]="reservationDetails.endDate"
+                 name="endDate"
+                 [min]="reservationDetails.startDate"
+                 (change)="calculateTotalAmount()" />
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col-sm-4 fw-bold">Price/Day:</div>
+        <div class="col-sm-8">₹{{ reservationDetails.pricePerDay }}</div>
+      </div>
+
+      <div class="row mb-2" *ngIf="!reservationDetails.startDate || !reservationDetails.endDate">
+        <div class="col-sm-12 text-danger text-center">
+          Please enter both start and end dates to calculate total.
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-sm-4 fw-bold">Total Amount:</div>
+        <div class="col-sm-8 text-success fw-bold">₹{{ reservationDetails.totalAmount }}</div>
+      </div>
+
+      <div class="text-center mt-4">
+        <button class="btn btn-light px-4 me-2" (click)="goBack()">Go Back</button>
+        <button class="btn btn-warning px-4" (click)="pay()">Pay</button>
+      </div>
+
+    </div>
+  </div>
+</div>

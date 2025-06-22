@@ -1,0 +1,75 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4 text-warning">Registered Users</h2>
+
+  <!-- Filters -->
+  <div class="row mb-4 justify-content-center">
+    <div class="col-md-4 mb-2">
+      <input
+        type="text"
+        class="form-control filter-input"
+        placeholder="Search by username..."
+        [(ngModel)]="searchTerm"
+        (input)="filterUsers()"
+      />
+    </div>
+
+    <div class="col-md-4 mb-2">
+      <select
+        class="form-control filter-input"
+        [(ngModel)]="selectedRole"
+        (change)="filterUsers()"
+      >
+        <option value="">All Roles</option>
+        <option value="ADMIN">Admin</option>
+        <option value="CUSTOMER">User</option>
+        <option value="INACTIVE">Inactive</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- User Cards -->
+  <div class="row mt-2" *ngIf="filteredUsers.length > 0; else noUsers">
+    <div class="col-md-4 mb-4" *ngFor="let user of filteredUsers">
+      <div class="card shadow border-0 rounded-3 user-card">
+
+        <!-- Card Header with Role Badge -->
+        <div
+          class="card-header d-flex justify-content-between align-items-center"
+        >
+          <span><strong>ID:</strong> {{ user.userId }}</span>
+          <span
+            class="badge"
+            [ngClass]="{
+              'badge-admin': user.roles === 'ADMIN',
+              'badge-user': user.roles === 'CUSTOMER',
+              'badge-inactive': user.roles === 'INACTIVE'
+            }"
+          >
+            {{ user.roles }}
+          </span>
+        </div>
+
+        <div class="card-body text-light">
+          <p><strong>User Name:</strong> {{ user.userName }}</p>
+          <p><strong>Email:</strong> {{ user.email }}</p>
+          <p><strong>Phone:</strong> {{ user.phoneNumber }}</p>
+
+          <button
+            class="btn btn-danger mt-2 w-100"
+            [disabled]="user.roles === 'INACTIVE'"
+            (click)="deactivateUser(user.userId)"
+          >
+            Deactivate
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- No Users Message -->
+  <ng-template #noUsers>
+    <div class="alert alert-warning text-center fw-bold">
+      No users found.
+    </div>
+  </ng-template>
+</div>

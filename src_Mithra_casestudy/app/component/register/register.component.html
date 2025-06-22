@@ -1,0 +1,68 @@
+<div class="register-container container col-md-5 mt-5 p-4 rounded shadow-lg">
+  <div class="text-center mb-4">
+    <img src="assets/logo.avif" width="80" height="80" class="rounded-circle shadow-sm mb-2" alt="RoadReady Logo">
+    <h2 class="text-warning">Register</h2>
+  </div>
+
+  <form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm">
+    <!-- Username -->
+    <div class="form-group mb-3">
+      <label class="text-light">Username</label>
+      <input class="form-control" type="text" name="userName" [(ngModel)]="user.userName" required minlength="3" maxlength="50" #userNameRef="ngModel">
+      <div class="text-danger small" *ngIf="userNameRef.touched && userNameRef.invalid">
+        Username must be between 3 and 50 characters.
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group mb-3">
+      <label class="text-light">Email</label>
+      <input type="email" class="form-control" name="email" [(ngModel)]="user.email" required #emailRef="ngModel">
+      <div class="text-danger small" *ngIf="emailRef.touched && emailRef.invalid">
+        Enter a valid email.
+      </div>
+    </div>
+
+    <!-- Phone Number -->
+    <div class="form-group mb-3">
+      <label class="text-light">Phone Number</label>
+      <input type="text" class="form-control" name="phoneNumber" required [(ngModel)]="user.phoneNumber" pattern="[0-9]{10}" #phoneRef="ngModel">
+      <div class="text-danger small" *ngIf="phoneRef.touched && phoneRef.invalid">
+        Enter a 10-digit phone number.
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="form-group mb-3">
+      <label class="text-light">Password</label>
+      <input type="password" [(ngModel)]="user.password" class="form-control" name="password" minlength="4" required #passwordRef="ngModel">
+      <div class="text-danger small" *ngIf="passwordRef.touched && passwordRef.invalid">
+        Password must be at least 4 characters long.
+      </div>
+    </div>
+
+    <!-- Role -->
+    <div class="form-group mb-4">
+      <label class="text-light">Role</label>
+      <select [(ngModel)]="user.roles" name="roles" class="form-control" required #rolesRef="ngModel">
+        <option value="" disabled>-- Select Role --</option>
+        <option value="customer">Customer</option>
+        <option value="admin">Admin</option>
+        <!--<option value="agent">Agent</option>
+      -->
+      </select>
+      <div class="text-danger small" *ngIf="rolesRef.touched && rolesRef.invalid">
+        Please select a role.
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="text-center">
+      <button class="btn btn-register w-100 py-2" type="submit" [disabled]="registerForm.invalid">Register</button>
+    </div>
+  </form>
+
+  <!-- Messages -->
+  <div class="alert alert-success mt-3 text-center" *ngIf="successMessage">{{ successMessage }}</div>
+  <div class="alert alert-danger mt-3 text-center" *ngIf="errorMessage">{{ errorMessage }}</div>
+</div>

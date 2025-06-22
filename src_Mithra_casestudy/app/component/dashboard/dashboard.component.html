@@ -1,0 +1,41 @@
+<!-- Sidebar layout -->
+<div class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="sidebar" [class.toggled]="isCollapsed" id="sidebar-wrapper">
+    <div class="sidebar-heading d-flex align-items-center px-3 py-2">
+      <img src="assets/logo.avif" alt="RoadReady Logo" class="logo me-2">
+      <span class="fs-5 text-light">RoadReady</span>
+    </div>
+
+    <div class="list-group list-group-flush">
+      <a class="list-group-item" routerLink="/home">Home</a>
+      
+      <a class="list-group-item" routerLink="/login" *ngIf="!isLoggedIn()">Login</a>
+      <a class="list-group-item" routerLink="/register" *ngIf="!isLoggedIn()">Register</a>
+      <a class="list-group-item" routerLink="/about" *ngIf="!isLoggedIn()">About Us</a>
+      <a class="list-group-item" routerLink="/contact" *ngIf="!isLoggedIn()">Contact Us</a>
+
+      <ng-container *ngIf="authService.isAdmin()">
+        <a class="list-group-item" routerLink="/addCar">Add Car</a>
+        <a class="list-group-item" routerLink="/viewUsers">View Users</a>
+        <a class="list-group-item" routerLink="/report">Rental Summary</a>
+      </ng-container>
+
+      <a class="list-group-item" routerLink="/check" *ngIf="isLoggedIn() && authService.isAgent()">Check-In/Out</a>
+      <a class="list-group-item" routerLink="/showCars" *ngIf="isLoggedIn()">View Cars</a>
+      <a class="list-group-item" routerLink="/history" *ngIf="isLoggedIn() && !authService.isAdmin() && !authService.isAgent()">My Bookings</a>
+      <a class="list-group-item" routerLink="/profile" *ngIf="isLoggedIn()">Profile</a>
+      <a class="list-group-item logout" (click)="logOut()" *ngIf="isLoggedIn()">Logout</a>
+    </div>
+  </div>
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper" class="w-100">
+    <!-- Fixed toggle button on top right -->
+    <button class="btn btn-sm toggle-btn position-fixed" (click)="toggleSidebar()">☰</button>
+
+    <div class="container-fluid mt-3">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+/* Title and heading styles */
+h2, h5 {
+  font-weight: bold;
+}
+
+/* Card styles */
+.card {
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Links inside cards */
+.card a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Contact form styling */
+.contact-form {
+  background-color: #2C3E50;
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background-color: #34495E;
+  border: none;
+  color: white;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #ccc;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border: 2px solid #F39C12;
+  outline: none;
+}
+
+.contact-form button {
+  background-color: #F39C12;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #e67e22;
+}

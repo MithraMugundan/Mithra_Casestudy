@@ -1,0 +1,57 @@
+<div class="container mt-5">
+  <h2 class="mb-4 text-center" style="color: #F39C12;">Rental Dashboard Report</h2>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Metric Cards: First Row -->
+  <div class="row g-4">
+    <!-- Total Revenue -->
+    <div class="col-md-4">
+      <div class="card shadow text-white text-center" style="background-color: #2C3E50;">
+        <div class="card-body">
+          <h5 class="card-title" style="color: #F39C12;">Total Revenue</h5>
+          <p class="fs-3 mt-3">₹ {{ totalRevenue | number:'1.2-2' }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Reservations -->
+    <div class="col-md-4">
+      <div class="card shadow text-white text-center" style="background-color: #2C3E50;">
+        <div class="card-body">
+          <h5 class="card-title" style="color: #F39C12;">Total Reservations</h5>
+          <p class="fs-3 mt-3">{{ totalReservations }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cancelled Reservations -->
+    <div class="col-md-4">
+      <div class="card shadow text-white text-center" style="background-color: #2C3E50;">
+        <div class="card-body">
+          <h5 class="card-title" style="color: #F39C12;">Cancelled Reservations</h5>
+          <p class="fs-3 mt-3">{{ cancelledReservations }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Metric Cards: Second Row -->
+  <div class="row g-4 mt-3">
+    <!-- Upcoming Reservations -->
+    <div class="col-md-4">
+      <div class="card shadow text-white text-center" style="background-color: #2C3E50;">
+        <div class="card-body">
+          <h5 class="card-title" style="color: #F39C12;">Upcoming Reservations (7 days)</h5>
+          <p class="fs-3 mt-3">{{ upcomingReservations }}</p>
+        </div>
+      </div>
+    </div>
+
+    
+
+   
+  </div>
+</div>

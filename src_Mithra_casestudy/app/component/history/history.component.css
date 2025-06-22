@@ -1,0 +1,102 @@
+/* Container styling */
+.rental-history-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Orange heading text */
+.text-orange {
+  color: #F39C12;
+  font-weight: bold;
+}
+
+/* Section heading */
+.section-heading {
+  color: #F39C12;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Card-style container */
+.history-card {
+  background-color: #2C3E50;
+  border: 2px solid #F39C12;
+  border-radius: 12px;
+  padding: 20px;
+  color: white;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  min-height: 100%;
+}
+
+/* Custom table design */
+.custom-table {
+  background-color: white;
+  color: #2C3E50;
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 0.9rem;
+}
+
+.custom-table thead {
+  background-color: #F39C12;
+  color: #2C3E50;
+  font-weight: bold;
+}
+
+.custom-table th, .custom-table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Button styling */
+.btn-warning {
+  background-color: #F39C12;
+  color: #2C3E50;
+  border: none;
+}
+
+.btn-warning:hover {
+  background-color: #e08e0b;
+}
+
+.btn-danger, .btn-success {
+  font-weight: 500;
+}
+
+.rental-history-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.history-card {
+  background-color: #2C3E50;
+  color: white;
+  border: 2px solid #F39C12;
+  border-radius: 12px;
+}
+
+.text-orange {
+  color: #F39C12;
+  font-weight: bold;
+}
+
+.section-heading {
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-left: 4px solid #F39C12;
+  padding-left: 8px;
+}
+
+.custom-table thead {
+  background-color: #F39C12;
+  color: #2C3E50;
+  font-weight: bold;
+}
+
+.custom-table td,
+.custom-table th {
+  vertical-align: middle;
+}
+
+.badge {
+  font-size: 0.85rem;
+  padding: 4px 8px;
+}

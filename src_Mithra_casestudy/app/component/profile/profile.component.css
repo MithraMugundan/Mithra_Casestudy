@@ -1,0 +1,36 @@
+/* Container styling */
+.profile-container {
+  background-color: #2C3E50;
+  border: 2px solid #F39C12;
+  border-radius: 12px;
+}
+
+/* Orange theme text */
+.text-orange {
+  color: #F39C12;
+  font-weight: bold;
+}
+
+/* Orange button styling */
+.btn-orange {
+  background-color: #F39C12;
+  color: #2C3E50;
+  border: none;
+}
+
+.btn-orange:hover {
+  background-color: #e08e0b;
+  color: white;
+}
+
+/* Form control focus */
+.form-control:focus {
+  border-color: #F39C12;
+  box-shadow: 0 0 5px #F39C12;
+}
+
+/* Disabled input styling */
+input[readonly], input:disabled {
+  background-color: #e9ecef;
+  color: #2C3E50;
+}

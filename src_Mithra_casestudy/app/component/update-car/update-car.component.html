@@ -1,0 +1,71 @@
+<div class="container mt-4 mb-5">
+  <h3 class="text-center text-warning mb-4">Update Car Details</h3>
+
+  <div class="row g-4">
+    <!-- Basic Info Card -->
+    <div class="col-md-6">
+      <div class="card custom-card">
+        <div class="card-body">
+          <h5 class="card-title text-warning">Basic Info</h5>
+          <p><strong>Car ID:</strong> {{ car.carId }}</p>
+
+          <div class="mb-3">
+            <label>Car Name</label>
+            <input [(ngModel)]="car.carName" class="form-control" placeholder="Car Name">
+          </div>
+          <div>
+            <label>Year</label>
+            <input [(ngModel)]="car.year" type="number" class="form-control" placeholder="Year">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Specifications Card -->
+    <div class="col-md-6">
+      <div class="card custom-card">
+        <div class="card-body">
+          <h5 class="card-title text-warning">Specifications</h5>
+          <div class="mb-3">
+            <label>Make</label>
+            <input [(ngModel)]="car.make" class="form-control" placeholder="Make">
+          </div>
+          <div class="mb-3">
+            <label>Passenger Capacity</label>
+            <input [(ngModel)]="car.passengerCapacity" type="number" class="form-control" placeholder="Passenger Capacity">
+          </div>
+          <div>
+            <label>Price Per Day</label>
+            <input [(ngModel)]="car.pricePerDay" type="number" class="form-control" placeholder="Price">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status and Location -->
+    <div class="col-md-6">
+      <div class="card custom-card">
+        <div class="card-body">
+          <h5 class="card-title text-warning">Availability</h5>
+          <div class="mb-3">
+            <label>Status</label>
+            <select [(ngModel)]="car.carStatus" class="form-select">
+              <option value="Available">Available</option>
+              <option value="Rented">Rented</option>
+              <option value="Maintenance">Maintenance</option>
+            </select>
+          </div>
+          <div>
+            <label>Location</label>
+            <input [(ngModel)]="car.location" class="form-control" placeholder="Location">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <button class="btn btn-secondary me-3" (click)="goBack()">Back</button>
+    <button class="btn btn-warning text-dark" (click)="updateCar()">Update Car</button>
+  </div>
+</div>

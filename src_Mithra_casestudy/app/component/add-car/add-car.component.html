@@ -1,0 +1,88 @@
+<div class="add-car-container container mt-4 col-md-6 p-4 mb-5 rounded shadow-lg">
+  <div class="text-center mb-4">
+    <img src="assets/logo.avif" width="70" height="70" class="rounded-circle shadow-sm mb-2" alt="RoadReady Logo">
+    <h3 class="text-warning">Add New Car</h3>
+  </div>
+
+  <form #carForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    <!-- Car Name -->
+    <div class="form-group mb-3">
+      <label class="text-light">Car Name</label>
+      <input type="text" class="form-control" name="carName" [(ngModel)]="car.carName"
+        required minlength="2" maxlength="100" #carName="ngModel">
+      <div class="text-danger small" *ngIf="carName.invalid && carName.touched">
+        Car name must be between 2 and 100 characters.
+      </div>
+    </div>
+
+    <!-- Year -->
+    <div class="form-group mb-3">
+      <label class="text-light">Year</label>
+      <input type="number" class="form-control" name="year"
+        [(ngModel)]="car.year" required min="1991" max="2025" #year="ngModel">
+      <div class="text-danger small" *ngIf="year.invalid && year.touched">
+        Year must be between 1991 and 2025.
+      </div>
+    </div>
+
+    <!-- Make -->
+    <div class="form-group mb-3">
+      <label class="text-light">Make</label>
+      <input type="text" class="form-control" name="make" [(ngModel)]="car.make"
+        required #make="ngModel">
+      <div class="text-danger small" *ngIf="make.invalid && make.touched">
+        Make is required.
+      </div>
+    </div>
+
+    <!-- Car Status -->
+    <div class="form-group mb-3">
+      <label class="text-light">Car Status</label>
+      <select class="form-control" name="carStatus" [(ngModel)]="car.carStatus"
+        required #carStatus="ngModel">
+        <option value="">Select status</option>
+        <option value="Available">Available</option>
+        <option value="Rented">Rented</option>
+        <option value="Maintenance">Maintenance</option>
+      </select>
+      <div class="text-danger small" *ngIf="carStatus.invalid && carStatus.touched">
+        Car status is required.
+      </div>
+    </div>
+
+    <!-- Location -->
+    <div class="form-group mb-3">
+      <label class="text-light">Location</label>
+      <input type="text" class="form-control" name="location" [(ngModel)]="car.location"
+        required #location="ngModel">
+      <div class="text-danger small" *ngIf="location.invalid && location.touched">
+        Location is required.
+      </div>
+    </div>
+
+    <!-- Passenger Capacity -->
+    <div class="form-group mb-3">
+      <label class="text-light">Passenger Capacity</label>
+      <input type="number" class="form-control" name="passengerCapacity"
+        [(ngModel)]="car.passengerCapacity" required min="1" max="15" #capacity="ngModel">
+      <div class="text-danger small" *ngIf="capacity.invalid && capacity.touched">
+        Capacity must be between 1 and 15.
+      </div>
+    </div>
+
+    <!-- Price Per Day -->
+    <div class="form-group mb-4">
+      <label class="text-light">Price Per Day</label>
+      <input type="number" class="form-control" name="pricePerDay"
+        [(ngModel)]="car.pricePerDay" required min="0.01" step="0.01" #price="ngModel">
+      <div class="text-danger small" *ngIf="price.invalid && price.touched">
+        Price must be greater than 0.
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <button type="button" class="btn btn-outline-light" (click)="goBack()">Back</button>
+      <button type="submit" class="btn btn-orange" [disabled]="carForm.invalid">Add Car</button>
+    </div>
+  </form>
+</div>

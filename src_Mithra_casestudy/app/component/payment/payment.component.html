@@ -1,0 +1,79 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4 text-orange">Payment Page</h2>
+
+  <div class="card mx-auto shadow payment-card">
+    <div class="card-body">
+
+      <div class="mb-3">
+        <label for="paymentType" class="form-label text-light">Payment Type</label>
+        <select id="paymentType" class="form-select" [(ngModel)]="paymentType" name="paymentType" (change)="resetCardFields()">
+          <option value="" disabled selected>Select payment method</option>
+          <option value="UPI">UPI</option>
+          <option value="Credit Card">Credit Card</option>
+          <option value="Debit Card">Debit Card</option>
+        </select>
+      </div>
+
+  
+<div *ngIf="paymentType === 'Credit Card' || paymentType === 'Debit Card'">
+
+  <div class="mb-3">
+    <label class="form-label">Card Number</label>
+    <input
+      type="text"
+      maxlength="16"
+      class="form-control"
+      [(ngModel)]="cardNumber"
+      name="cardNumber"
+      placeholder="Enter 16-digit card number"
+    />
+    <div class="text-danger mt-1" *ngIf="cardNumber && cardNumber.length !== 16">
+      Card number must be 16 digits.
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <label class="form-label">Expiry (MM/YY)</label>
+      <input
+        type="text"
+        maxlength="5"
+        class="form-control"
+        [(ngModel)]="expiryDate"
+        name="expiryDate"
+        placeholder="MM/YY"
+      />
+    </div>
+
+    <div class="col">
+      <label class="form-label">CVV</label>
+      <input
+        type="password"
+        maxlength="3"
+        class="form-control"
+        [(ngModel)]="cvv"
+        name="cvv"
+        placeholder="123"
+      />
+    </div>
+  </div>
+
+</div>
+
+
+      <div class="mb-3">
+        <label class="form-label text-light fw-bold">Total Amount:</label>
+        <div class="text-success fs-5">₹{{ totalAmount }}</div>
+      </div>
+
+      <div class="text-center">
+        <button class="btn btn-warning"
+          [disabled]="!paymentType || hasInvalidCardDetails()"
+          (click)="makePayment()">
+          Make Payment
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+.text-orange {
+  color: #F39C12;
+}
+
+.payment-card {
+  width: 60%;
+  background-color: #2C3E50;
+  color: white;
+  border: 2px solid #F39C12;
+  border-radius: 12px;
+}
+
+.card-body label,
+.card-body select,
+.card-body input {
+  color: #2C3E50;
+}
+
+.card-body input.form-control,
+.card-body select.form-select {
+  background-color: white;
+  color: #2C3E50;
+}
+
+.card-body input:focus,
+.card-body select:focus {
+  border-color: #F39C12;
+  box-shadow: 0 0 5px #F39C12;
+}
+
+.btn-warning {
+  background-color: #F39C12;
+  color: #2C3E50;
+  border: none;
+  font-weight: bold;
+}
+
+.btn-warning:hover {
+  background-color: #e08e0b;
+}
+
+.text-danger {
+  font-size: 0.85rem;
+}

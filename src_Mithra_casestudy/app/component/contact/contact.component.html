@@ -1,0 +1,66 @@
+<div class="container my-5">
+  <h2 class="text-center mb-4" style="color: #F39C12;">Contact Us</h2>
+
+  <div class="card mb-5 shadow-sm" style="background-color: #2C3E50; color: white;">
+    <div class="card-body text-center">
+      <h5 class="card-title" style="color: #F39C12;">📞 Universal India Support</h5>
+      <p class="card-text">Reach us from anywhere in India for help with bookings, issues, or inquiries.</p>
+      <p><strong>Phone:</strong> +91-99999-88888</p>
+      <p><strong>Email:</strong> <a href="mailto:support@roadready.com" style="color: #F39C12;">support@roadready.com</a></p>
+      <p><strong>Office Hours:</strong> Mon–Sat, 9:00 AM – 8:00 PM</p>
+    </div>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+    <div class="col" *ngFor="let city of cities">
+      <div class="card h-100 shadow" style="background-color: #34495E; color: white;">
+        <div class="card-body">
+          <h5 class="card-title" style="color: #F39C12;">📍 {{ city.name }}</h5>
+          <p class="card-text"><strong>Phone:</strong> {{ city.phone }}</p>
+          <p class="card-text">
+            <strong>Email:</strong>
+            <a href="mailto:{{ city.email }}" style="color: #F39C12;">{{ city.email }}</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Customer Contact Form -->
+  <div class="contact-form">
+    <h4 class="mb-4" style="color: #F39C12;">Send Us a Message</h4>
+    <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+      <div class="row mb-3">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <input type="text" class="form-control" name="name" placeholder="Your Name" required minlength="4" ngModel />
+          <div *ngIf="contactForm.submitted && contactForm.controls['name']?.errors" class="text-danger small mt-1">
+            Name must be at least 4 characters.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <input type="email" class="form-control" name="email" placeholder="Your Email" required email ngModel />
+          <div *ngIf="contactForm.submitted && contactForm.controls['email']?.errors" class="text-danger small mt-1">
+            Please enter a valid email.
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <input type="text" class="form-control" name="subject" placeholder="Subject" required ngModel />
+        <div *ngIf="contactForm.submitted && contactForm.controls['subject']?.errors" class="text-danger small mt-1">
+          Subject is required.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <textarea class="form-control" name="message" rows="5" placeholder="Your Message" required minlength="10" ngModel></textarea>
+        <div *ngIf="contactForm.submitted && contactForm.controls['message']?.errors" class="text-danger small mt-1">
+
+          Message should be at least 10 characters.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-warning px-4">Submit</button>
+    </form>
+  </div>
+</div>

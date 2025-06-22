@@ -1,0 +1,80 @@
+<div class="profile-container container mt-5 col-md-6 p-4 rounded shadow-lg">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="text-orange">Your Profile</h3>
+    <button *ngIf="!isEditable" class="btn btn-orange btn-sm" (click)="enableEdit()">Edit</button>
+  </div>
+
+  <form #profileForm="ngForm" (ngSubmit)="updateUser()">
+
+    <!-- User ID -->
+    <div class="form-group mb-3">
+      <label class="text-white">User ID</label>
+      <input type="number" class="form-control" [value]="user.userId" disabled>
+    </div>
+
+    <!-- User Name -->
+    <div class="form-group mb-3">
+      <label class="text-white">User Name</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        name="userName"
+        [(ngModel)]="user.userName" 
+        [readonly]="!isEditable"
+        required minlength="4"
+        #username="ngModel">
+      <div class="text-danger mt-1" *ngIf="username.touched && username.invalid">
+        Username must be at least 4 characters.
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group mb-3">
+      <label class="text-white">Email</label>
+      <input 
+        type="email" 
+        class="form-control" 
+        name="email"
+        [(ngModel)]="user.email" 
+        [readonly]="!isEditable"
+        required
+        #email="ngModel">
+      <div class="text-danger mt-1" *ngIf="email.touched && email.invalid">
+        Please enter a valid email address.
+      </div>
+    </div>
+
+    <!-- Phone -->
+    <div class="form-group mb-3">
+      <label class="text-white">Mobile</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        name="phoneNumber"
+        [(ngModel)]="user.phoneNumber"
+        [readonly]="!isEditable"
+        pattern="[0-9]{10}" 
+        required
+        #phone="ngModel">
+      <div class="text-danger mt-1" *ngIf="phone.touched && phone.invalid">
+        Enter a 10-digit phone number.
+      </div>
+    </div>
+
+    <!-- Role -->
+    <div class="form-group mb-4">
+      <label class="text-white">Role</label>
+      <input type="text" class="form-control" [value]="user.roles" disabled>
+    </div>
+
+    <!-- Submit -->
+    <button 
+      type="submit" 
+      class="btn btn-success w-100"
+      *ngIf="isEditable"
+      [disabled]="profileForm.invalid || !hasChanges()">
+      Update Profile
+    </button>
+
+  </form>
+</div>

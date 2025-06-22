@@ -1,0 +1,86 @@
+.card {
+  border-radius: 16px;
+  background-color: #2C3E50;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.card h3 {
+  color: #F39C12;
+  font-weight: 600;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #F39C12;
+}
+
+.form-control {
+  border-radius: 8px;
+  border: none;
+  padding: 10px 12px;
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: 0 0 5px #F39C12;
+  border: 1px solid #F39C12;
+}
+
+input[type="date"] {
+  background-color: #ecf0f1;
+  color: #2C3E50;
+}
+
+input[type="date"]::placeholder {
+  color: #7f8c8d;
+}
+
+.btn-outline-light {
+  border-color: white;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.btn-outline-light:hover {
+  background-color: white;
+  color: #2C3E50;
+}
+
+.btn {
+  font-weight: bold;
+  border-radius: 6px;
+  padding: 8px 18px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:disabled {
+  background-color: #bdc3c7;
+  color: #7f8c8d;
+  border: none;
+  cursor: not-allowed;
+}
+
+.bg-gunmetal {
+  background-color: #2C3E50;
+}
+
+.text-orange {
+  color: #F39C12;
+}
+
+.btn-orange {
+  background-color: #F39C12;
+  color: white;
+  border: none;
+}
+
+.btn-orange:hover {
+  background-color: #e08e0b;
+  color: white;
+}

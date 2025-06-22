@@ -1,0 +1,70 @@
+/* Wrapper layout */
+#wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Sidebar */
+#sidebar-wrapper {
+  background-color: #2C3E50;
+  min-height: 100vh;
+  width: 250px;
+  transition: margin 0.3s ease;
+  position: relative;
+  z-index: 1000;
+}
+
+#sidebar-wrapper.toggled {
+  margin-left: -250px;
+}
+
+/* Sidebar heading with logo */
+.sidebar-heading {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #F39C12;
+  background-color: #2C3E50;
+  padding: 0.75rem;
+}
+
+/* Logo image */
+.logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Sidebar items */
+.list-group-item {
+  background-color: #2C3E50;
+  color: white;
+  border: none;
+  transition: background-color 0.2s ease;
+}
+
+.list-group-item:hover {
+  background-color: #34495E;
+  color: #F39C12;
+}
+
+.list-group-item.logout {
+  background-color: #C0392B;
+}
+
+.list-group-item.logout:hover {
+  background-color: #E74C3C;
+  color: white;
+}
+
+/* Toggle button - fixed top right */
+.toggle-btn {
+  top: 10px;
+  right: 10px;
+  z-index: 1050;
+  background-color: #F39C12;
+  color: #2C3E50;
+  font-weight: bold;
+  border: none;
+  position: fixed;
+}
